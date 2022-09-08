@@ -1,0 +1,38 @@
+{
+  "name": "my-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vite preview",
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore --fix src",
+    "format": "prettier . --write"
+  },
+  "dependencies": {
+    "@mdi/font": "5.9.55",
+    "roboto-fontface": "*",
+    "vue": "^3.2.37",
+    "vuetify": "^3.0.0-beta.0",
+    "webfontloader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@cypress/vite-dev-server": "^3.1.1",
+    "@cypress/vue": "^4.2.0",
+    "@types/webfontloader": "^1.0.0",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "cypress": "^10.7.0",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^9.4.0",
+    "prettier": "2.7.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-vuetify": "^1.0.0-alpha.12",
+    "vue-cli-plugin-vuetify": "~2.5.5",
+    "vue-tsc": "^0.40.4"
+  },
+  "type": "module"
+}
