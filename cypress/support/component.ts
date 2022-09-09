@@ -20,25 +20,52 @@ import "./commands";
 // require('./commands')
 
 import vuetify from "../../src/plugins/vuetify";
-import { VApp } from "vuetify/lib/components/VApp/index.mjs";
 import { mount } from "cypress/vue";
-import { h } from "vue";
+import { createMemoryHistory, createRouter } from "vue-router";
+import { routes } from "../../src/router";
 // Ensure global styles are loaded
-// import "../../src/assets/main.css";
+import "@mdi/font/css/materialdesignicons.css";
 
-Cypress.Commands.add("mount", (component: any, ...args: any) => {
-  args.global = args.global || {};
-  args.global.plugins = args.global.plugins || [];
-  args.global.plugins.push(vuetify);
+Cypress.Commands.add("mount", (component, options = {}) => {
+  const root = document.getElementById("cy-root");
 
-  return mount(() => {
-    return h(VApp, {}, component);
-  }, ...args);
+  // add the v-application class that allows Vuetify styles to work
+  if (!root?.classList.contains("v-locale--is-rtl")) {
+    root?.classList.add("v-locale--is-ltr");
+  }
+
+  // create router if one is not provided
+  if (!options.router) {
+    options.router = createRouter({
+      routes: routes,
+      history: createMemoryHistory(),
+    });
+  }
+
+  const defaultOptions = {
+    global: {
+      stubs: {
+        transition: false,
+        "transition-group": false,
+      },
+      plugins: [
+        {
+          install(app: any) {
+            app.use(options.router);
+          },
+        },
+        vuetify,
+      ],
+      ...options,
+    },
+  };
+
+  return mount(component, defaultOptions).as("wrapper");
 });
 
 // Example use:
 // cy.mount(MyComponent)
 
 Cypress.Commands.add("vue", () => {
-  return cy.wrap(Cypress.vueWrapper);
+  return cy.get("@wrapper");
 });

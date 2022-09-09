@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { mount } from "cypress/vue";
 
 type MountParams = Parameters<typeof mount>;

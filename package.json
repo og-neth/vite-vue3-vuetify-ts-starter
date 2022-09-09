@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "vite-vue3-vuetify3-ts-starter",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,12 +8,21 @@
     "dev": "vite",
     "preview": "vite preview",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore --fix src",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "cy::ct::test::all": "npx cypress run-ct",
+    "cy::ct::test": "npx cypress open --component",
+    "cy::open": "npx cypress open",
+    "unit::test": "vitest",
+    "unit::test::coverage": "vitest run --coverage",
+    "unit::test::all": "vitest run",
+    "new::component": "bash scripts/scaffold-component.sh",
+    "new::composable": "bash scripts/scaffold-composable.sh"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
     "roboto-fontface": "*",
     "vue": "^3.2.37",
+    "vue-router": "^4.1.5",
     "vuetify": "^3.0.0-beta.0",
     "webfontloader": "^1.0.0"
   },
@@ -21,18 +30,23 @@
     "@cypress/vite-dev-server": "^3.1.1",
     "@cypress/vue": "^4.2.0",
     "@types/webfontloader": "^1.0.0",
+    "@typescript-eslint/parser": "^5.36.2",
     "@vitejs/plugin-vue": "^3.1.0",
+    "@vitest/coverage-c8": "^0.23.1",
     "cypress": "^10.7.0",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^9.4.0",
+    "jsdom": "^20.0.0",
+    "msw": "^0.47.0",
     "prettier": "2.7.1",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-vuetify": "^1.0.0-alpha.12",
+    "vitest": "^0.23.1",
     "vue-cli-plugin-vuetify": "~2.5.5",
     "vue-tsc": "^0.40.4"
-  },
-  "type": "module"
+  }
 }
