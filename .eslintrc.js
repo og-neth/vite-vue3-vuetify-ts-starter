@@ -3,10 +3,11 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
     "plugin:vue/vue3-recommended",
-    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:cypress/recommended",
+    "prettier",
   ],
   parser: "vue-eslint-parser",
   parserOptions: {
